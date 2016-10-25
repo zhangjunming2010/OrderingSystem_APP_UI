@@ -20,7 +20,7 @@
       <column label="邮费" name="fPostage" type="String" xid="column6"/>  
       <column label="月销量" name="fRecord" type="Integer" xid="column7"/> 
     </div>  
-    <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="data" idColumn="id">
+    <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="menuData" idColumn="id">
    <column label="id" name="id" type="String" xid="column16"></column>
    <column label="title" name="title" type="String" xid="column17"></column>
    <column label="imgName" name="imgName" type="String" xid="column18"></column>
@@ -59,7 +59,7 @@
                     </div> 
                   </div>  
                   <div component="$UI/system/components/justep/panel/panel" class="panel panel-default x-card" xid="panel2">
-   <div component="$UI/system/components/justep/list/list" class="x-list" xid="list2" data="data">
+   <div component="$UI/system/components/justep/list/list" class="x-list" xid="list2" data="menuData">
     <div component="$UI/system/components/bootstrap/row/row" class="row text-center x-list-template" xid="row1">
      <div class="col col-xs-4 cell list-group-item" xid="col1" bind-click="openPageClick">
       <div xid="div1">
