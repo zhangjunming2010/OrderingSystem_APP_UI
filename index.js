@@ -10,6 +10,9 @@ define(function(require) {
 			"pageMappings" : {
 				"main" : {
 					url : require.toUrl('./main.w')
+				},
+				"dc" : {
+					url : require.toUrl('./dc/dc.w')
 				}
 			}
 		})
