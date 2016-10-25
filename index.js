@@ -18,7 +18,7 @@ define(function(require) {
 		})
 
 	};
-
+	
 	Model.prototype.modelLoad = function(event){
 		justep.Shell.showPage("main");
 	};

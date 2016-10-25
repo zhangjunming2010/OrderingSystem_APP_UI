@@ -2,7 +2,7 @@
 .tb-nopadding{ padding-left:0;padding-right:0;}
 
 /*顶部titlebar*/
-.x-panel-top .x-titlebar{ background-color:#f9333c;}
+.x-panel-top .x-titlebar{ background-color:#ff3838;}
 .x-titlebar .x-titlebar-title{ font-weight:normal;}
 .x-cards{ padding:0;}
 
@@ -21,7 +21,4 @@
 .tb-listBox{ padding-left:0px; padding-right:10px; margin-bottom:10px;}
 .tb-listBox div{ background-color:#fff;}
 .tb-listBox p{ font-size:13px; margin-top:5px;}
-
-/*单列内容*/
-.media{ margin-top:0; padding:10px; border-bottom:1px solid #e7e7e7; background-color:#fff;}
 

@@ -19,6 +19,7 @@ define(function(require) {
 	Model.prototype.getImageUrl = function(url) {
 		return require.toUrl(url);
 	};
+	
 	/*
 	 * 写首页图片数据缓存的代码 1、数据模型创建时事件
 	 * 2、判断有没有localStorage，如果有显示localStorage中的内容，否则显示静态内容。
@@ -99,7 +100,6 @@ define(function(require) {
 		代码如下： */
 		var row = event.bindingContext.$object;
 		var pagename = row.val("pageName");
-		console.log(pagename);
 		if (pagename)
 			justep.Shell.showPage(pagename);
 		
