@@ -1,31 +1,31 @@
 function AutoResizeImage(objImg) {
 	var img = new Image();
 	img.src = objImg.src;
-//	var hRatio;
-//	var wRatio;
-//	var Ratio = 1;
+	// var hRatio;
+	// var wRatio;
+	// var Ratio = 1;
 	var w = img.width;
-//	var h = img.height;
-//	wRatio = maxWidth / w;
-//	hRatio = maxHeight / h;
-//	if (maxWidth == 0 && maxHeight == 0) {
-//		Ratio = 1;
-//	} else if (maxWidth == 0) {//
-//		if (hRatio < 1)
-//			Ratio = hRatio;
-//	} else if (maxHeight == 0) {
-//		if (wRatio < 1)
-//			Ratio = wRatio;
-//	} else if (wRatio < 1 || hRatio < 1) {
-//		Ratio = (wRatio <= hRatio ? wRatio : hRatio);
-//	}
-//	if (Ratio < 1) {
-//		w = w * Ratio;
-//		h = h * Ratio;
-//	}
-//	objImg.height = h;
-	objImg.width = w*0.3;
-};
+	// var h = img.height;
+	// wRatio = maxWidth / w;
+	// hRatio = maxHeight / h;
+	// if (maxWidth == 0 && maxHeight == 0) {
+	// Ratio = 1;
+	// } else if (maxWidth == 0) {//
+	// if (hRatio < 1)
+	// Ratio = hRatio;
+	// } else if (maxHeight == 0) {
+	// if (wRatio < 1)
+	// Ratio = wRatio;
+	// } else if (wRatio < 1 || hRatio < 1) {
+	// Ratio = (wRatio <= hRatio ? wRatio : hRatio);
+	// }
+	// if (Ratio < 1) {
+	// w = w * Ratio;
+	// h = h * Ratio;
+	// }
+	// objImg.height = h;
+	objImg.width = w * 0.3;
+}
 
 define(function(require) {
 	var $ = require("jquery");
@@ -34,7 +34,7 @@ define(function(require) {
 	var Model = function() {
 		this.callParent();
 	};
-	
+
 	Model.prototype.goodsDataCustomRefresh = function(event) {
 		/*
 		 * 1、加载商品数据
@@ -47,65 +47,71 @@ define(function(require) {
 			goodsData.loadData(data);
 		});
 	};
-	
+
 	// 图片路径转换
 	Model.prototype.getImageUrl = function(url) {
 		return require.toUrl(url);
 	};
-	
-	//添加商品
+
+	// 添加商品
 	var clickTimes = 0;
-	
-	Model.prototype.addBtnClick = function(event){
+
+	Model.prototype.addBtnClick = function(event) {
 		var row = event.bindingContext.$object;
 		var cartData = this.comp("cartData");
-		var isExit = cartData.find(["gid"], [row.val("id")],false,false,false,false);
-		if(isExit.length == "0"){
+		var isExit = cartData.find([ "gid" ], [ row.val("id") ], false, false, false, false);
+		if (isExit.length == "0") {
 			cartData.newData({
 				"defaultValues" : [ {
 					"id" : justep.UUID.createUUID(),
 					"fTitle" : row.val("fTitle"),
-					"fImg":row.val("fImg"),
-					"fNbr":1,
-					"fPrice":row.val("fPrice"),
-					"gid":row.val("id")
+					"fImg" : row.val("fImg"),
+					"fNbr" : 1,
+					"fPrice" : row.val("fPrice"),
+					"gid" : row.val("id")
 				} ]
 			});
-		}else{
+		} else {
 			var rowData = isExit[0];
 			cartData.setValue("fNbr", rowData.val("fNbr") + 1, rowData);
-			console.log(rowData.val("fTitle")+"所点份数："+rowData.val("fNbr"));
+			console.log(rowData.val("fTitle") + "所点份数：" + rowData.val("fNbr"));
 		}
 		clickTimes++;
 		this.comp("cartBtn").set({
-			"label" : "已点数量（"+clickTimes+"）"
+			"label" : "已点数量（" + clickTimes + "）"
 		});
-	};
-	
-	Model.prototype.modelParamsReceive = function(event){
-		var menu_id = event.params.menu_id;
-		var menuData = this.comp("menuData");
-		var menuTmp = this.comp("menuTmp");
-		menuTmp.clear();
-		//获取点击的那个菜单选项并放入到menuTmp中，并删除menuData中的行数据
-		menuData.each(function(param){
-			  var id = param.row.val('id');
-			  if(id == menu_id){
-				  var row2 = param.row;
-				  menuTmp.loadData([row2.toJson()]);
-				  menuData.remove(row2);
-			  }
-		});
-		//将menuData剩余的行数据一次加入到menuTmp中
-		menuData.each(function(param){
-			  var id = param.row.val('id');
-			  if(id != menu_id){
-				  var row2 = param.row;
-				  menuTmp.loadData([row2.toJson()]);
-			  }
-		});
-		menuTmp.first();
 	};
 
+	Model.prototype.modelParamsReceive = function(event) {
+		var menu_id = event.params.menu_id;
+		var menuData = this.comp("menuData");
+		var row1 = menuData.getFirstRow();
+		var m = 0;
+		var n = 0;
+		var tmprows = [];
+		menuData.each(function(param) {
+			m++;
+			var id = param.row.val('id');
+			if (id == menu_id) {
+				var row2 = param.row;
+				menuData.exchangeRow(row1, row2);
+				n = m;
+			}
+			
+		});
+		//排序逻辑，选中的类型始终排在最上，而其他的还是保持原有顺序。
+		menuData.each(function(param) {
+			tmprows.push(param.row);
+		});
+		var l = n;
+		if((n-2) > 0){
+			for(var i = 0;i<(n-2);i++){
+				menuData.exchangeRow(tmprows[n-1], tmprows[l-2]);
+				l--;
+			}	
+		}
+		menuData.first();
+	};
+	
 	return Model;
 });
