@@ -47,7 +47,13 @@ define(function(require) {
 			goodsData.loadData(data);
 		});
 	};
-	
+
+	// 图片路径转换
+	Model.prototype.transUrl = function(row) {
+		var url = (typeof row === "object") ? "./main/img/" + row.val("imgName") : row;
+		return require.toUrl(url);
+	};
+
 	// 图片路径转换
 	Model.prototype.getImageUrl = function(url) {
 		return require.toUrl(url);
@@ -58,34 +64,46 @@ define(function(require) {
 		var menu_id = row.row.id.value.latestValue;
 		console.log(menu_id);
 	};
-	
-	
-	var clickTimes = 0;
-	
-	Model.prototype.addBtnClick = function(event){
+
+	Model.prototype.plusBtnClick = function(event){
 		var row = event.bindingContext.$object;
 		var cartData = this.comp("cartData");
-		var isExit = cartData.find(["gid"], [row.val("id")],false,false,false,false);
-		if(isExit.length == "0"){
-			cartData.newData({
-				"defaultValues" : [ {
-					"id" : justep.UUID.createUUID(),
-					"fTitle" : row.val("fTitle"),
-					"fImg":row.val("fImg"),
-					"fNbr":1,
-					"fPrice":row.val("fPrice"),
-					"gid":row.val("id")
-				} ]
-			});
-		}else{
-			var rowData = isExit[0];
-			cartData.setValue("fNbr", rowData.val("fNbr") + 1, rowData);
-			console.log(rowData.val("fTitle")+"所点份数："+rowData.val("fNbr"));
+		cartData.newData({
+			"defaultValues" : [ {
+				"id" : row.val("id"),
+				"fNbr" : 0
+			} ]
+		})
+		row.val("fNbr",row.val("fNbr")+1);
+		cartData.saveData();
+//		input.focus();
+//		document.getElementById(me.getIDByXID("goodsNbr")).focus(); 
+//		var goodNbr = input.val();
+//		if(goodNbr == ""){
+//			goodNbr = 1;
+//			input.value = goodNbr;
+//		}else{
+//			input.value = goodNbr + 1;
+//		}
+//		input.blur();
+//		document.getElementById(me.getIDByXID("goodsNbr")).blur();
+	};
+
+	Model.prototype.minusBtnClick = function(event){
+		var me = this;
+		var input = me.comp("goodsNbr");
+		document.getElementById(me.getIDByXID("goodsNbr")).focus(); 
+		var goodNbr = input.val();
+		if(goodNbr != ""){
+			goodNbr = goodNbr - 1;
+			input.value = goodNbr - 1;
+			if(goodNbr == "0"){
+				input.value = "";
+			}else{
+				input.value = goodNbr;
+			}
 		}
-		clickTimes++;
-		this.comp("cartBtn").set({
-			"label" : "已点数量（"+clickTimes+"）"
-		});
+		document.getElementById(me.getIDByXID("goodsNbr")).blur();
 	};
 
 	return Model;
