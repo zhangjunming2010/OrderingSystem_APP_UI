@@ -66,7 +66,7 @@
        <img class="x-img3" bind-attr-src="$model.transUrl($object)" xid="image1"></img>
        <h5 class="text-black" bind-text="ref('title')" xid="h51" style="font-weight:bold;">关于我们</h5></div> </div> </div> </div> </div><div component="$UI/system/components/justep/panel/panel"
                     class="panel panel-default x-card" xid="panel3"> 
-                    <h4 xid="h41" class="list-group-item text-black" style="font-weight:bold;font-size:medium;"><![CDATA[热销菜品]]></h4>  
+                    <h4 xid="h41" class="list-group-item text-black" style="font-weight:bold;font-size:medium;"><![CDATA[推荐菜品]]></h4>  
                     <div component="$UI/system/components/justep/list/list" class="x-list" xid="list3">
    <div component="$UI/system/components/bootstrap/row/row" class="row" xid="row3">
    <div class="col col-xs-4" xid="col3"></div>
