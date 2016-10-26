@@ -2,7 +2,7 @@
 
 <div xmlns="http://www.w3.org/1999/xhtml" component="$UI/system/components/justep/window/window" design="device:m;"
   xid="window" class="window">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:237px;left:699px;"> 
+  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:237px;left:699px;" onParamsReceive="modelParamsReceive"> 
     <div component="$UI/system/components/justep/data/data" autoLoad="true"
       xid="menuData" idColumn="id"> 
       <column label="id" name="id" type="String" xid="column16"/>  
@@ -26,7 +26,13 @@
   <column label="fImg" name="fImg" type="String" xid="xid5"></column>
   <column label="fNbr" name="fNbr" type="Integer" xid="xid6"></column>
   <column label="fPrice" name="fPrice" type="Integer" xid="xid7"></column>
-  <column label="gid" name="gid" type="Integer" xid="xid8"></column></div></div>  
+  <column label="gid" name="gid" type="Integer" xid="xid8"></column></div>
+  <div component="$UI/system/components/justep/data/data" autoLoad="false" xid="menuTmp" idColumn="id">
+   <column label="id" name="id" type="String" xid="column10"></column>
+   <column label="title" name="title" type="String" xid="column9"></column>
+   <column label="imgName" name="imgName" type="String" xid="column8"></column>
+   <column label="pageName" name="pageName" type="String" xid="column5"></column>
+   <data xid="default2">[]</data></div></div>  
   <div component="$UI/system/components/justep/panel/panel" class="x-panel x-card x-full x-has-iosstatusbar"
     xid="panel1"> 
     <div class="x-panel-top" xid="top1"> 
@@ -49,10 +55,10 @@
         xid="row2"> 
         <div class="col col-xs-3" xid="col4">
           <div component="$UI/system/components/justep/list/list" class="x-list tb-root"
-            xid="list3" data="menuData" dataItemAlias="menuRow"> 
+            xid="list3" data="menuTmp" dataItemAlias="menuRow"> 
             <ul class="x-list-template list-group" xid="listTemplateUl3" componentname="$UI/system/components/justep/list/list#listTemplateUl"
               id="undefined_listTemplateUl3"> 
-              <li xid="li5" class="list-group-item text-center tb-nopadding" bind-css="{'current':menuRow.val('id')== $model.menuData.val(&quot;id&quot;)}" bind-click="li5Click">
+              <li xid="li5" class="list-group-item text-center tb-nopadding" bind-click="li5Click" bind-css="{'current':menuRow.val('id')== $model.menuData.val(&quot;id&quot;)}">
                 <h5 xid="h52" class="text-black" bind-text="ref(&quot;title&quot;)"/>
               </li>
             </ul> 

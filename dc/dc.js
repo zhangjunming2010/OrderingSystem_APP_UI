@@ -52,14 +52,8 @@ define(function(require) {
 	Model.prototype.getImageUrl = function(url) {
 		return require.toUrl(url);
 	};
-
-	Model.prototype.li5Click = function(event){
-		var row = event.bindingContext.$object;
-		var menu_id = row.row.id.value.latestValue;
-		console.log(menu_id);
-	};
 	
-	
+	//添加商品
 	var clickTimes = 0;
 	
 	Model.prototype.addBtnClick = function(event){
@@ -86,6 +80,31 @@ define(function(require) {
 		this.comp("cartBtn").set({
 			"label" : "已点数量（"+clickTimes+"）"
 		});
+	};
+	
+	Model.prototype.modelParamsReceive = function(event){
+		var menu_id = event.params.menu_id;
+		var menuData = this.comp("menuData");
+		var menuTmp = this.comp("menuTmp");
+		menuTmp.clear();
+		//获取点击的那个菜单选项并放入到menuTmp中，并删除menuData中的行数据
+		menuData.each(function(param){
+			  var id = param.row.val('id');
+			  if(id == menu_id){
+				  var row2 = param.row;
+				  menuTmp.loadData([row2.toJson()]);
+				  menuData.remove(row2);
+			  }
+		});
+		//将menuData剩余的行数据一次加入到menuTmp中
+		menuData.each(function(param){
+			  var id = param.row.val('id');
+			  if(id != menu_id){
+				  var row2 = param.row;
+				  menuTmp.loadData([row2.toJson()]);
+			  }
+		});
+		menuTmp.first();
 	};
 
 	return Model;

@@ -101,7 +101,7 @@ define(function(require) {
 		var row = event.bindingContext.$object;
 		var pagename = row.val("pageName");
 		if (pagename)
-			justep.Shell.showPage(pagename);
+			justep.Shell.showPage(pagename,{menu_id:row.val("id")});
 		
 	};
 
