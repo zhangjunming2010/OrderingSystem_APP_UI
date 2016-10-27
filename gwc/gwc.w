@@ -106,7 +106,7 @@
                         </div> 
                       </div>
                     </div>
-                    <div xid="div22" class="x-swipe-area" style="background-color:#ff3838;">
+                    <div xid="div22" class="x-swipe-area" style="background-color:#ff3838;" bind-click="div22Click">
                       	删除
                     </div> 
                   </li> 

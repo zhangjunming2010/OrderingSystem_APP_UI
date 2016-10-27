@@ -135,5 +135,13 @@ define(function(require) {
 		this.swipeDelete();
 	};
 
+	Model.prototype.div22Click = function(event){
+		var row = event.bindingContext.$object;
+		var cartData = this.comp("cartData");
+		cartData.deleteData(row);
+		var data = this.comp("cartData");
+		tmp = data.toJson();
+	};
+
 	return Model;
 });
