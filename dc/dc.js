@@ -54,11 +54,9 @@ define(function(require) {
 	};
 
 	// 添加商品
-	var clickTimes = 0;
-
 	Model.prototype.addBtnClick = function(event) {
-		var row = event.bindingContext.$object;
 		var cartData = this.comp("cartData");
+		var row = event.bindingContext.$object;
 		var isExit = cartData.find([ "gid" ], [ row.val("id") ], false, false, false, false);
 		if (isExit.length == "0") {
 			cartData.newData({
@@ -74,43 +72,70 @@ define(function(require) {
 		} else {
 			var rowData = isExit[0];
 			cartData.setValue("fNbr", rowData.val("fNbr") + 1, rowData);
-			console.log(rowData.val("fTitle") + "所点份数：" + rowData.val("fNbr"));
 		}
-		clickTimes++;
+		var Nbr = 0;
+		cartData.each(function(param){
+			Nbr = Nbr + param.row.val("fNbr");
+		});
 		this.comp("cartBtn").set({
-			"label" : "已点数量（" + clickTimes + "）"
+			"label" : "已点数量（" + Nbr + "）"
 		});
 	};
 
 	Model.prototype.modelParamsReceive = function(event) {
 		var menu_id = event.params.menu_id;
 		var menuData = this.comp("menuData");
-		var row1 = menuData.getFirstRow();
 		var m = 0;
 		var n = 0;
 		var tmprows = [];
+		
+		
+		//左侧菜单排序，确保首页点击的菜单在第一个而其他的顺序不变。
 		menuData.each(function(param) {
+			tmprows.push(param.row);
 			m++;
 			var id = param.row.val('id');
 			if (id == menu_id) {
-				var row2 = param.row;
-				menuData.exchangeRow(row1, row2);
 				n = m;
 			}
-			
-		});
-		//排序逻辑，选中的类型始终排在最上，而其他的还是保持原有顺序。
-		menuData.each(function(param) {
-			tmprows.push(param.row);
 		});
 		var l = n;
-		if((n-2) > 0){
-			for(var i = 0;i<(n-2);i++){
+		if((n-1) > 0){
+			for(var i = 0;i<(n-1);i++){
 				menuData.exchangeRow(tmprows[n-1], tmprows[l-2]);
 				l--;
 			}	
 		}
 		menuData.first();
+	};
+	
+	Model.prototype.cartBtnClick = function(event){
+		var cartData = this.comp("cartData");
+		if(cartData.getCount() != "0"){
+			var url = require.toUrl('../gwc/gwc.w');
+			this.comp("windowDialog1").open({
+				src:url,
+				params:{
+					cartData:cartData.toJson()
+				}
+			});
+		}
+	};
+	
+	Model.prototype.windowDialog1Receive = function(event){
+		console.log(event.data);
+		var Nbr = 0;
+		var cartData = this.comp("cartData");
+		cartData.clear();
+		cartData.loadData(event.data);
+		if(cartData.getCount() != "0"){
+			cartData.each(function(param){
+				Nbr = Nbr + param.row.val("fNbr");
+			});
+		}
+		this.comp("cartBtn").set({
+			"label" : "已点数量（" + Nbr + "）"
+		});
 	};
 	
 	return Model;

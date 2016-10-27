@@ -2,7 +2,7 @@
 
 <div xmlns="http://www.w3.org/1999/xhtml" component="$UI/system/components/justep/window/window" design="device:m;"
   xid="window" class="window">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:210px;left:435px;" onParamsReceive="modelParamsReceive"> 
+  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:157px;left:685px;" onParamsReceive="modelParamsReceive"> 
     <div component="$UI/system/components/justep/data/data" autoLoad="true"
       xid="menuData" idColumn="id"> 
       <column label="id" name="id" type="String" xid="column16"/>  
@@ -33,7 +33,7 @@
    <column label="imgName" name="imgName" type="String" xid="column19"></column>
    <column label="pageName" name="pageName" type="String" xid="column15"></column>
    <data xid="default4">[]</data></div></div>  
-  <div component="$UI/system/components/justep/panel/panel" class="x-panel x-card x-full x-has-iosstatusbar"
+  <span component="$UI/system/components/justep/windowDialog/windowDialog" xid="windowDialog1" style="top:225px;left:273px;" src="../gwc/gwc.w" onReceive="windowDialog1Receive"></span><div component="$UI/system/components/justep/panel/panel" class="x-panel x-card x-full x-has-iosstatusbar"
     xid="panel1"> 
     <div class="x-panel-top" xid="top1"> 
       <div component="$UI/system/components/justep/titleBar/titleBar" title="菜单"
@@ -74,7 +74,7 @@
                   <li xid="li1" class="text-center tb-listBox text-black" componentname="li(html)" id="undefined_li1">
                     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row1"> 
                       <div class="x-col x-col-fixed x-col-center pull-left" xid="col2" id="imgcontainer" style="width:auto;">
-                       <!--  --> <img src="" alt="" xid="image2" bind-attr-src=" $model.getImageUrl(val(&quot;fImg&quot;)) " onload="AutoResizeImage(this)" />
+                       <!--  --> <img src="" alt="" xid="image2" bind-attr-src='$model.getImageUrl( val("fImg"))' onload="AutoResizeImage(this)" />
                       </div>  
                       <div class="x-col" xid="col3">
                         <div component="$UI/system/components/justep/row/row" class="x-row" xid="row5"> 
@@ -97,7 +97,7 @@
                   </li>
                 </ul> 
               </div></div> 
-          <div class="x-panel-bottom" xid="bottom1"><div component="$UI/system/components/justep/button/buttonGroup" class="btn-group x-card btn-group-justified" tabbed="true" xid="buttonGroup1"><a component="$UI/system/components/justep/button/button" class="btn btn-default btn-icon-left btn-block center-block" xid="cartBtn" icon="icon-ios7-cart" style="color:#FF0000;" label="已点数量（0）">
+          <div class="x-panel-bottom" xid="bottom1"><div component="$UI/system/components/justep/button/buttonGroup" class="btn-group x-card btn-group-justified" tabbed="true" xid="buttonGroup1"><a component="$UI/system/components/justep/button/button" class="btn btn-default btn-icon-left btn-block center-block" xid="cartBtn" icon="icon-ios7-cart" style="color:#FF0000;" label="已点数量（0）" onClick="cartBtnClick">
    <i xid="i3" class="icon-ios7-cart"></i>
    <span xid="span5">已点数量（0）</span></a>
   </div></div></div>
