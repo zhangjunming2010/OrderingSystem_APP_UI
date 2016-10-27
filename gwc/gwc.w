@@ -3,7 +3,7 @@
 <div xmlns="http://www.w3.org/1999/xhtml" component="$UI/system/components/justep/window/window" design="device:m;"
   xid="window" class="window">  
   <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:172px;left:684px;"> 
-    <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="cartData" idColumn="id" confirmDelete="false" confirmRefresh="false">
+    <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="cartData" idColumn="id" confirmDelete="false" confirmRefresh="false" onCustomRefresh="cartDataCustomRefresh">
    <column label="id" name="id" type="String" xid="xid1"></column>
    <column label="fTitle" name="fTitle" type="String" xid="xid2"></column>
    <column label="fImg" name="fImg" type="String" xid="xid5"></column>

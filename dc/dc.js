@@ -123,7 +123,6 @@ define(function(require) {
 	};
 	
 	Model.prototype.windowDialog1Receive = function(event){
-		console.log(event.data);
 		var Nbr = 0;
 		var cartData = this.comp("cartData");
 		cartData.clear();

@@ -30,7 +30,6 @@ function AutoResizeImage(objImg) {
 define(function(require) {
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
-
 	var Model = function() {
 		this.callParent();
 	};
@@ -47,9 +46,12 @@ define(function(require) {
 		return require.toUrl(url);
 	};
 
+	var tmp = "";
 	Model.prototype.plusBtnClick = function(event){
 		var row = event.bindingContext.$object;
 		row.val("fNbr",row.val("fNbr")+1);
+		var data = this.comp("cartData");
+		tmp = data.toJson();
 	};
 
 	Model.prototype.minusBtnClick = function(event){
@@ -62,17 +64,26 @@ define(function(require) {
 				cartData.deleteData(row);
 			}
 		}
+		var data = this.comp("cartData");
+		tmp = data.toJson();
 	};
 
 	Model.prototype.backBtnClick = function(event){
 		var cartData = this.comp("cartData");
 		this.comp("windowReceiver1").windowEnsure(cartData.toJson());
 	};
-
+	
 	Model.prototype.windowReceiver1Receive = function(event){
 		var cartData = this.comp("cartData");
 		cartData.clear();
-		cartData.loadData(event.params.cartData);
+		tmp = event.params.cartData;
+		cartData.loadData(tmp);
+	};
+
+	Model.prototype.cartDataCustomRefresh = function(event){
+		var cartData = this.comp("cartData");
+		cartData.clear();
+		cartData.loadData(tmp);
 	};
 
 	return Model;
