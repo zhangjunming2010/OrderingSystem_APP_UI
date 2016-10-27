@@ -54,6 +54,13 @@ define(function(require) {
 		row.val("fNbr",row.val("fNbr")+1);
 		var data = this.comp("cartData");
 		tmp = data.toJson();
+		var totalPrice = 0;
+		data.each(function(param){
+			totalPrice = totalPrice + (param.row.val("fNbr") * param.row.val("fPrice"));
+		});
+		this.comp("button2").set({
+			"label" : "总计：" + totalPrice + " 元"
+		});
 	};
 
 	Model.prototype.minusBtnClick = function(event){
@@ -68,6 +75,13 @@ define(function(require) {
 		}
 		var data = this.comp("cartData");
 		tmp = data.toJson();
+		var totalPrice = 0;
+		data.each(function(param){
+			totalPrice = totalPrice + (param.row.val("fNbr") * param.row.val("fPrice"));
+		});
+		this.comp("button2").set({
+			"label" : "总计：" + totalPrice + " 元"
+		});
 	};
 
 	Model.prototype.backBtnClick = function(event){
@@ -80,12 +94,26 @@ define(function(require) {
 		cartData.clear();
 		tmp = event.params.cartData;
 		cartData.loadData(tmp);
+		var totalPrice = 0;
+		cartData.each(function(param){
+			totalPrice = totalPrice + (param.row.val("fNbr") * param.row.val("fPrice"));
+		});
+		this.comp("button2").set({
+			"label" : "总计：" + totalPrice + " 元"
+		});
 	};
 
 	Model.prototype.cartDataCustomRefresh = function(event){
 		var cartData = this.comp("cartData");
 		cartData.clear();
 		cartData.loadData(tmp);
+		var totalPrice = 0;
+		cartData.each(function(param){
+			totalPrice = totalPrice + (param.row.val("fNbr") * param.row.val("fPrice"));
+		});
+		this.comp("button2").set({
+			"label" : "总计：" + totalPrice + " 元"
+		});
 	};
 	
 	Model.prototype.swipeDelete = function(){
@@ -93,7 +121,6 @@ define(function(require) {
 		var swipeAreaSize = 100;
 		var dx;
 		touch.on('#' + newsContentID, 'touchstart', function(ev){
-			//ev.preventDefault();
 			var $swipNode = $('#' + newsContentID + " li").has(ev.target);
 			dx = parseInt($swipNode.attr('swipeX') || "0");
 		});
@@ -141,6 +168,22 @@ define(function(require) {
 		cartData.deleteData(row);
 		var data = this.comp("cartData");
 		tmp = data.toJson();
+		var totalPrice = 0;
+		data.each(function(param){
+			totalPrice = totalPrice + (param.row.val("fNbr") * param.row.val("fPrice"));
+		});
+		this.comp("button2").set({
+			"label" : "总计：" + totalPrice + " 元"
+		});
+		justep.Util.hint(
+			row.val("fTitle")+"已删除！",
+			{
+				"delay":1000,
+				"position":"middle",
+				"type":"warning"
+			}
+		);
+		$(".x-hint").find("button[class='close']").hide();
 	};
 
 	return Model;

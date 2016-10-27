@@ -36,18 +36,19 @@
   <span component="$UI/system/components/justep/windowDialog/windowDialog" xid="windowDialog1" style="top:225px;left:273px;" src="../gwc/gwc.w" onReceive="windowDialog1Receive"></span><div component="$UI/system/components/justep/panel/panel" class="x-panel x-card x-full x-has-iosstatusbar"
     xid="panel1"> 
     <div class="x-panel-top" xid="top1"> 
-      <div component="$UI/system/components/justep/titleBar/titleBar" title="菜单"
-        class="x-titlebar"> 
+      <div component="$UI/system/components/justep/titleBar/titleBar" class="x-titlebar"> 
         <div class="x-titlebar-left"> 
           <a component="$UI/system/components/justep/button/button" label=""
-            class="btn btn-link btn-only-icon" icon="icon-chevron-left" onClick="{operation:'window.close'}"
-            xid="backBtn"> 
+            class="btn btn-link btn-only-icon" icon="icon-chevron-left" xid="backBtn" style="color:#FFFFFF;font-size:medium;" onClick="backBtnClick"> 
             <i class="icon-chevron-left"/>  
             <span/> 
           </a> 
         </div>  
-        <div class="x-titlebar-title">菜单</div>  
-        <div class="x-titlebar-right reverse"></div> 
+        <div class="x-titlebar-title"></div>  
+        <div class="x-titlebar-right reverse">
+  <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-icon-left" label="已选(0)" xid="cartBtn" icon="linear linear-bug" onClick="cartBtnClick" style="color:#FFFFFF;font-size:medium;">
+   <i xid="i5" class="linear linear-bug"></i>
+   <span xid="span7">已选(0)</span></a></div> 
       </div> 
     </div>  
     <div class="x-panel-content x-cards" xid="content1">
@@ -97,12 +98,9 @@
                   </li>
                 </ul> 
               </div></div> 
-          <div class="x-panel-bottom" xid="bottom1"><div component="$UI/system/components/justep/button/buttonGroup" class="btn-group x-card btn-group-justified" tabbed="true" xid="buttonGroup1"><a component="$UI/system/components/justep/button/button" class="btn btn-default btn-icon-left btn-block center-block" xid="cartBtn" icon="icon-ios7-cart" style="color:#FF0000;" label="已点数量（0）" onClick="cartBtnClick">
-   <i xid="i3" class="icon-ios7-cart"></i>
-   <span xid="span5">已点数量（0）</span></a>
-  </div></div></div>
+          </div>
         </div>
       </div>
     </div> 
   </div> 
-</div>
+<span component="$UI/system/components/justep/messageDialog/messageDialog" xid="messageDialog1" style="top:16px;left:178px;" type="YesNo" title="确认" message="确认退回到首页？已选菜品将被清空。" width="320" onYes="messageDialog1Yes"></span></div>

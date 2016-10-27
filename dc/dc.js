@@ -52,12 +52,18 @@ define(function(require) {
 	Model.prototype.getImageUrl = function(url) {
 		return require.toUrl(url);
 	};
+	
+	// 图片路径转换
+	Model.prototype.transUrl = function(row) {
+		var url = (typeof row === "object") ? "./main/img/" + row.val("imgName") : row;
+		return require.toUrl(url);
+	};
 
 	// 添加商品
 	Model.prototype.addBtnClick = function(event) {
 		var cartData = this.comp("cartData");
 		var row = event.bindingContext.$object;
-		var isExit = cartData.find([ "gid" ], [ row.val("id") ], false, false, false, false);
+		var isExit = cartData.find([ "gid" ], [ row.val("id") ]);
 		if (isExit.length == "0") {
 			cartData.newData({
 				"defaultValues" : [ {
@@ -78,8 +84,16 @@ define(function(require) {
 			Nbr = Nbr + param.row.val("fNbr");
 		});
 		this.comp("cartBtn").set({
-			"label" : "已点数量（" + Nbr + "）"
+			"label" : "已选(" + Nbr + ")"
 		});
+		justep.Util.hint(
+			row.val("fTitle")+"添加成功！",
+			{
+				"delay":1000,
+				"position":"middle",
+			}
+		);
+		$(".x-hint").find("button[class='close']").hide();
 	};
 
 	Model.prototype.modelParamsReceive = function(event) {
@@ -119,6 +133,16 @@ define(function(require) {
 					cartData:cartData.toJson()
 				}
 			});
+		}else{
+			justep.Util.hint(
+					"请选取菜品！",
+					{
+						"delay":2000,
+						"position":"middle",
+						"type":"warning"
+					}
+			);
+			$(".x-hint").find("button[class='close']").hide();
 		}
 	};
 	
@@ -133,8 +157,22 @@ define(function(require) {
 			});
 		}
 		this.comp("cartBtn").set({
-			"label" : "已点数量（" + Nbr + "）"
+			"label" : "已选(" + Nbr + ")"
 		});
+	};
+	
+	Model.prototype.backBtnClick = function(event){
+		var cartData = this.comp("cartData");
+		if(cartData.getCount() != "0"){
+			this.comp("messageDialog1").show();
+		}else{
+			this.close();
+		}
+	};
+	
+	Model.prototype.messageDialog1Yes = function(event){
+		this.comp("cartData").clear();
+		this.close();
 	};
 	
 	return Model;

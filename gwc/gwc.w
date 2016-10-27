@@ -2,7 +2,7 @@
 
 <div xmlns="http://www.w3.org/1999/xhtml" component="$UI/system/components/justep/window/window" design="device:m;"
   xid="window" class="window">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:172px;left:684px;"
+  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:236px;left:407px;"
     onLoad="modelLoad"> 
     <div component="$UI/system/components/justep/data/data" autoLoad="true"
       xid="cartData" idColumn="id" confirmDelete="false" confirmRefresh="false" onCustomRefresh="cartDataCustomRefresh"> 
@@ -18,90 +18,63 @@
   <div component="$UI/system/components/justep/panel/panel" class="x-panel x-card x-full x-has-iosstatusbar"
     xid="panel1"> 
     <div class="x-panel-top" xid="top1"> 
-      <div component="$UI/system/components/justep/titleBar/titleBar" title="已选菜品"
-        class="x-titlebar"> 
+      <div component="$UI/system/components/justep/titleBar/titleBar" class="x-titlebar" style="color:#FFFFFF;" title="已选菜品"> 
         <div class="x-titlebar-left"> 
           <a component="$UI/system/components/justep/button/button" label=""
             class="btn btn-link btn-only-icon" icon="icon-chevron-left" onClick="backBtnClick"
-            xid="backBtn"> 
+            xid="backBtn" style="color:#FFFFFF;"> 
             <i class="icon-chevron-left"/>  
             <span/> 
           </a> 
         </div>  
         <div class="x-titlebar-title">已选菜品</div>  
-        <div class="x-titlebar-right reverse"/> 
+        <div class="x-titlebar-right reverse"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-icon-left pull-right center-block" label="提交菜单" xid="commitBtn" icon="icon-clipboard" style="color:#FFFFFF;background-color:ff3838;">
+   <i xid="i3" class="icon-clipboard"></i>
+   <span xid="span5">提交菜单</span></a></div> 
       </div> 
     </div>  
     <div class="x-panel-content x-cards" xid="content1"> 
       <div component="$UI/system/components/justep/panel/panel" class="x-panel x-full"
         xid="panel2"> 
-        <div class="x-panel-content  x-scroll-view" xid="content2" _xid="C74674B578F00001EB181C901A001736"
+        <div class="x-panel-content" xid="content2" _xid="C74674B578F00001EB181C901A001736"
           style="top: 0px; bottom: 48px;"> 
-          <div class="x-scroll" component="$UI/system/components/justep/scrollView/scrollView"
-            xid="scrollView1"> 
-            <div class="x-content-center x-pull-down container" xid="div1"> 
-              <i class="x-pull-down-img glyphicon x-icon-pull-down" xid="i5"/>  
-              <span class="x-pull-down-label" xid="span7">下拉刷新...</span>
-            </div>  
-            <div class="x-scroll-content" xid="div2"> 
-              <div component="$UI/system/components/justep/list/list" class="x-list"
-                xid="list1" data="cartData" autoLoad="true"> 
-                <ul class="x-list-template x-min-height" xid="listTemplateUl1"
-                  componentname="$UI/system/components/justep/list/list#listTemplateUl"
-                  id="undefined_listTemplateUl1"> 
-                  <li xid="li1" class="text-center tb-listBox text-black"
-                    componentname="li(html)" id="undefined_li1" style="padding-left:0px; padding-right:6px;overflow:visible;position:relative;display:block;"> 
+          <div component="$UI/system/components/justep/list/list" class="x-list" xid="list1" data="cartData" autoLoad="true"> 
+                <ul class="x-list-template x-min-height" xid="listTemplateUl1" componentname="$UI/system/components/justep/list/list#listTemplateUl" id="undefined_listTemplateUl1"> 
+                  <li xid="li1" class="text-center tb-listBox text-black" componentname="li(html)" id="undefined_li1" style="padding-left:0px; padding-right:6px;overflow:visible;position:relative;display:block;"> 
                     <div xid="div6" style="overflow:hidden;">
-                      <div component="$UI/system/components/justep/row/row"
-                        class="x-row" xid="row1" style="overflow:hidden;"> 
-                        <div class="x-col x-col-fixed x-col-center pull-left"
-                          xid="col2" id="imgcontainer" style="width:auto;"> 
-                          <img src="" alt="" xid="image2" onload="AutoResizeImage(this)"
-                            bind-attr-src="$model.getImageUrl( val(&quot;fImg&quot;))"/>
+                      <div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="overflow:hidden;"> 
+                        <div class="x-col x-col-fixed x-col-center pull-left" xid="col2" id="imgcontainer" style="width:auto;"> 
+                          <img src="" alt="" xid="image2" onload="AutoResizeImage(this)" bind-attr-src="$model.getImageUrl( val(&quot;fImg&quot;))" />
                         </div>  
                         <div class="x-col" xid="col3"> 
-                          <div component="$UI/system/components/justep/row/row"
-                            class="x-row" xid="row5"> 
+                          <div component="$UI/system/components/justep/row/row" class="x-row" xid="row5"> 
                             <div class="x-col x-col-center" xid="col14"> 
-                              <span xid="span1" style="font-weight:bold;" bind-text="ref(&quot;fTitle&quot;)"/>
-                            </div> 
+                              <h3 xid="h31" bind-text='ref("fTitle")'>h3</h3></div> 
                           </div>  
-                          <div component="$UI/system/components/justep/row/row"
-                            class="x-row" xid="row6"> 
-                            <div class="x-col x-col-center" xid="col17"> 
-                              <span xid="span2" bind-text="&quot;￥&quot;+ val(&quot;fPrice&quot;)"
-                                style="color:#FF0000;"/>
-                            </div> 
-                          </div>  
-                          <div component="$UI/system/components/justep/row/row"
-                            class="x-row" xid="row7"> 
-                            <div class="x-col" xid="col1"/>  
-                            <div class="x-col x-col-fixed x-col-center" xid="col5"
-                              style="width:auto;"> 
-                              <a component="$UI/system/components/justep/button/button"
-                                class="btn btn-link btn-sm btn-only-icon" label="button"
-                                xid="minusBtn" icon="icon-android-remove" onClick="minusBtnClick"> 
-                                <i xid="i2" class="icon-android-remove"/>  
-                                <span xid="span4"/>
+                          <div component="$UI/system/components/justep/row/row" class="x-row" xid="row7"> 
+                            <div class="x-col x-col-center" xid="col1"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row2">
+   <div class="x-col x-col-center pull-right" xid="col6"><h5 xid="h55" class="pull-right"><![CDATA[单价：]]></h5></div>
+   <div class="x-col x-col-center" xid="col10"><span xid="span2" bind-text='"￥"+ val("fPrice")' style="color:#FF0000;"></span></div>
+   <div class="x-col" xid="col11"><h5 xid="h53"><![CDATA[X]]></h5></div></div></div>  
+                            <div class="x-col x-col-fixed x-col-center" xid="col5" style="width:auto;"> 
+                              <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-sm btn-only-icon" label="button" xid="minusBtn" icon="icon-android-remove" onClick="minusBtnClick"> 
+                                <i xid="i2" class="icon-android-remove" />  
+                                <span xid="span4" />
                               </a> 
                             </div>  
-                            <div class="x-col x-col-fixed x-col-center" xid="col7"
-                              style="width:auto;"> 
-                              <input component="$UI/system/components/justep/input/input"
-                                class="form-control" xid="goodsNbr" dataType="Integer"
-                                format="0,000" min="0" max="99" maxLength="2" placeHolder="0"
-                                style="text-align:center;width:50px;" bind-ref="ref(&quot;fNbr&quot;)"/>
+                            <div class="x-col x-col-fixed x-col-center" xid="col7" style="width:auto;"> 
+                              <input component="$UI/system/components/justep/input/input" class="form-control" xid="goodsNbr" dataType="Integer" format="0,000" min="0" max="99" maxLength="2" placeHolder="0" style="text-align:center;width:50px;" bind-ref="ref(&quot;fNbr&quot;)" />
                             </div>  
-                            <div class="x-col x-col-fixed x-col-center" xid="col8"
-                              style="width:auto;"> 
-                              <a component="$UI/system/components/justep/button/button"
-                                class="btn btn-link btn-sm btn-only-icon" label="button"
-                                xid="plusBtn" icon="icon-android-add" onClick="plusBtnClick"> 
-                                <i xid="i1" class="icon-android-add"/>  
-                                <span xid="span3"/>
+                            <div class="x-col x-col-fixed x-col-center" xid="col8" style="width:auto;"> 
+                              <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-sm btn-only-icon" label="button" xid="plusBtn" icon="icon-android-add" onClick="plusBtnClick"> 
+                                <i xid="i1" class="icon-android-add" />  
+                                <span xid="span3" />
                               </a> 
                             </div>  
-                            <div class="x-col" xid="col9"/>
+                            <div class="x-col x-col-center" xid="col9"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row3">
+   <div class="x-col x-col-center" xid="col12"><h5 xid="h54"><![CDATA[=]]></h5></div>
+   <div class="x-col x-col-center" xid="col13"><h4 xid="h41" bind-text='"￥"+ val("fPrice") * val("fNbr")' style="font-weight:bold;color:#FF0000;font-size:x-large;">h4</h4></div>
+   <div class="x-col" xid="col15"></div></div></div>
                           </div> 
                         </div> 
                       </div>
@@ -111,24 +84,10 @@
                     </div> 
                   </li> 
                 </ul> 
-              </div> 
-            </div>  
-            <div class="x-content-center x-pull-up" xid="div3"> 
-              <span class="x-pull-up-label" xid="span8">加载更多...</span>
-            </div> 
-          </div> 
-        </div>  
-        <div class="x-panel-bottom" xid="bottom1"> 
-          <div component="$UI/system/components/justep/button/buttonGroup"
-            class="btn-group x-card btn-group-justified" tabbed="true" xid="buttonGroup1"> 
-            <a component="$UI/system/components/justep/button/button" class="btn btn-default btn-icon-left btn-block center-block"
-              label="提交菜单" xid="commitBtn" icon="icon-clipboard" style="color:#FF0000;"> 
-              <i xid="i3" class="icon-clipboard"/>  
-              <span xid="span5">提交菜单</span>
-            </a> 
-          </div> 
-        </div> 
-      </div>
+              </div></div>  
+        <div class="x-panel-bottom" xid="bottom2"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-block" label="总计：" xid="button2" style="background-color:#FF0000;color:#FFFFFF;font-weight:bold;font-size:x-large;">
+   <i xid="i6"></i>
+   <span xid="span10">总计：</span></a></div></div>
     </div> 
   </div>  
   <span component="$UI/system/components/justep/windowReceiver/windowReceiver"
