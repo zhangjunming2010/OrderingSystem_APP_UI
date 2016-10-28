@@ -25,7 +25,7 @@ function AutoResizeImage(objImg) {
 //	}
 //	objImg.height = h;
 	objImg.width = w*0.3;
-};
+}
 
 define(function(require) {
 	var $ = require("jquery");
@@ -35,13 +35,6 @@ define(function(require) {
 	var Model = function() {
 		this.callParent();
 	};
-	
-	// 图片路径转换
-	Model.prototype.transUrl = function(row) {
-		var url = (typeof row === "object") ? "./main/img/" + row.val("imgName") : row;
-		return require.toUrl(url);
-	};
-
 	
 	// 图片路径转换
 	Model.prototype.getImageUrl = function(url) {

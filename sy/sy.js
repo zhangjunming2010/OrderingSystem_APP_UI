@@ -11,7 +11,7 @@ define(function(require) {
 	
 	// 图片路径转换
 	Model.prototype.transUrl = function(row) {
-		var url = (typeof row === "object") ? "./main/img/" + row.val("imgName") : row;
+		var url = (typeof row === "object") ? "../main/img/" + row.val("imgName") : row;
 		return require.toUrl(url);
 	};
 
@@ -34,9 +34,7 @@ define(function(require) {
 		var fImgUrl = localStorage.getItem("index_BannerImg_src");
 		if (fImgUrl == undefined) {
 			$(carousel.domNode).find("img").eq(0).attr({
-				"src" : "./main/img/carouselBox61.jpg",
-				"goodsID" : "1",
-				"pagename" : "./detail.w"
+				"src" : "../main/img/carouselBox61.jpg",
 			});
 		} else {
 			var fUrl = localStorage.getItem("index_BannerImg_url");
@@ -51,7 +49,7 @@ define(function(require) {
 		/*
 		 * 1、加载轮换图片数据 2、根据data数据动态添加carouse组件中的content页面 3、修改第一张图片
 		*/
-		var url = require.toUrl("./main/json/imgData.json");
+		var url = require.toUrl("../main/json/imgData.json");
 		var imgData = event.source;
 		imgData.clear();
 		$.ajaxSettings.async = false;
@@ -84,7 +82,7 @@ define(function(require) {
 		/*
 		 * 1、加载商品数据
 		 */
-		var url = require.toUrl("./main/json/goodsData.json");
+		var url = require.toUrl("../main/json/goodsData.json");
 		var goodsData = event.source;
 		goodsData.clear();
 		$.ajaxSettings.async = false;

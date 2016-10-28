@@ -63,7 +63,7 @@
     <div component="$UI/system/components/bootstrap/row/row" class="row text-center x-list-template" xid="row1">
      <div class="col col-xs-4 cell list-group-item" xid="col1" bind-click="openPageClick">
       <div xid="div1">
-       <img class="x-img3" bind-attr-src="$model.transUrl($object)" xid="image1"></img>
+       <img class="x-img3" bind-attr-src=' $model.transUrl($object)' xid="image1"></img>
        <h5 class="text-black" bind-text="ref('title')" xid="h51" style="font-weight:bold;">关于我们</h5></div> </div> </div> </div> </div><div component="$UI/system/components/justep/panel/panel"
                     class="panel panel-default x-card" xid="panel3"> 
                     <h4 xid="h41" class="list-group-item text-black" style="font-weight:bold;font-size:medium;"><![CDATA[推荐菜品]]></h4>  

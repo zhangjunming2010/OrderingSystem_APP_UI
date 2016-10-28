@@ -39,7 +39,7 @@ define(function(require) {
 		/*
 		 * 1、加载商品数据
 		 */
-		var url = require.toUrl("./main/json/goodsData.json");
+		var url = require.toUrl("../main/json/goodsData.json");
 		var goodsData = event.source;
 		goodsData.clear();
 		$.ajaxSettings.async = false;
@@ -50,12 +50,6 @@ define(function(require) {
 
 	// 图片路径转换
 	Model.prototype.getImageUrl = function(url) {
-		return require.toUrl(url);
-	};
-	
-	// 图片路径转换
-	Model.prototype.transUrl = function(row) {
-		var url = (typeof row === "object") ? "./main/img/" + row.val("imgName") : row;
 		return require.toUrl(url);
 	};
 

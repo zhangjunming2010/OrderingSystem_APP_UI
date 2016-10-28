@@ -2,7 +2,7 @@
 
 <div xmlns="http://www.w3.org/1999/xhtml" component="$UI/system/components/justep/window/window" design="device:m;"
   xid="window" class="window">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:236px;left:407px;"
+  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:323px;left:406px;"
     onLoad="modelLoad"> 
     <div component="$UI/system/components/justep/data/data" autoLoad="true"
       xid="cartData" idColumn="id" confirmDelete="false" confirmRefresh="false" onCustomRefresh="cartDataCustomRefresh"> 
@@ -49,13 +49,15 @@
                         <div class="x-col" xid="col3"> 
                           <div component="$UI/system/components/justep/row/row" class="x-row" xid="row5"> 
                             <div class="x-col x-col-center" xid="col14"> 
-                              <h3 xid="h31" bind-text='ref("fTitle")'>h3</h3></div> 
+                              <h3 xid="h31" bind-text='ref("fTitle")' style="font-weight:bold;">h3</h3></div> 
                           </div>  
-                          <div component="$UI/system/components/justep/row/row" class="x-row" xid="row7"> 
-                            <div class="x-col x-col-center" xid="col1"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row2">
-   <div class="x-col x-col-center pull-right" xid="col6"><h5 xid="h55" class="pull-right"><![CDATA[单价：]]></h5></div>
-   <div class="x-col x-col-center" xid="col10"><span xid="span2" bind-text='"￥"+ val("fPrice")' style="color:#FF0000;"></span></div>
-   <div class="x-col" xid="col11"><h5 xid="h53"><![CDATA[X]]></h5></div></div></div>  
+                           
+                        <div component="$UI/system/components/justep/row/row" class="x-row" xid="row3">
+   <div class="x-col" xid="col16"></div>
+   <div class="x-col" xid="col17"><span xid="span2" bind-text='"￥"+ val("fPrice")' style="color:#FF0000;"></span></div>
+   <div class="x-col" xid="col18"></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row2">
+   <div class="x-col" xid="col4"></div>
+   <div class="x-col x-col-fixed x-col-center" xid="col9" style="width:auto;"><div component="$UI/system/components/justep/row/row" class="x-row x-row-center" xid="row7" style="text-align:center;"> 
                             <div class="x-col x-col-fixed x-col-center" xid="col5" style="width:auto;"> 
                               <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-sm btn-only-icon" label="button" xid="minusBtn" icon="icon-android-remove" onClick="minusBtnClick"> 
                                 <i xid="i2" class="icon-android-remove" />  
@@ -71,12 +73,9 @@
                                 <span xid="span3" />
                               </a> 
                             </div>  
-                            <div class="x-col x-col-center" xid="col9"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row3">
-   <div class="x-col x-col-center" xid="col12"><h5 xid="h54"><![CDATA[=]]></h5></div>
-   <div class="x-col x-col-center" xid="col13"><h4 xid="h41" bind-text='"￥"+ val("fPrice") * val("fNbr")' style="font-weight:bold;color:#FF0000;font-size:x-large;">h4</h4></div>
-   <div class="x-col" xid="col15"></div></div></div>
-                          </div> 
-                        </div> 
+                            </div></div>
+   <div class="x-col" xid="col15"></div></div>
+  </div> 
                       </div>
                     </div>
                     <div xid="div22" class="x-swipe-area" style="background-color:#ff3838;" bind-click="div22Click">
@@ -85,7 +84,7 @@
                   </li> 
                 </ul> 
               </div></div>  
-        <div class="x-panel-bottom" xid="bottom2"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-block" label="总计：" xid="button2" style="background-color:#FF0000;color:#FFFFFF;font-weight:bold;font-size:x-large;">
+        <div class="x-panel-bottom" xid="bottom2"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-block" label="总计：" xid="button2" style="color:#FFFFFF;font-weight:bold;font-size:x-large;background-color:#ff3838;">
    <i xid="i6"></i>
    <span xid="span10">总计：</span></a></div></div>
     </div> 

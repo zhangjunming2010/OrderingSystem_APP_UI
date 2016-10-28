@@ -85,7 +85,7 @@
                         </div>  
                         <div component="$UI/system/components/justep/row/row" class="x-row" xid="row6"> 
                           <div class="x-col x-col-center" xid="col17">
-                            <span xid="span2" bind-text="&quot;￥&quot;+ val(&quot;fPrice&quot;)" />
+                            <span xid="span2" bind-text="&quot;￥&quot;+ val(&quot;fPrice&quot;)" style="color:#FF0000;"/>
                           </div>
                         </div>  
                         <div component="$UI/system/components/justep/row/row" class="x-row" xid="row7"><div class="x-col" xid="col1"></div>
