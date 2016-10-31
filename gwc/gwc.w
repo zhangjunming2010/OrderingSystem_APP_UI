@@ -40,7 +40,7 @@
           style="top: 0px; bottom: 48px;"> 
           <div component="$UI/system/components/justep/list/list" class="x-list" xid="list1" data="cartData" autoLoad="true"> 
                 <ul class="x-list-template x-min-height" xid="listTemplateUl1" componentname="$UI/system/components/justep/list/list#listTemplateUl" id="undefined_listTemplateUl1"> 
-                  <li xid="li1" class="text-center tb-listBox text-black" componentname="li(html)" id="undefined_li1" style="padding-left:0px; padding-right:6px;overflow:visible;position:relative;display:block;"> 
+                  <li xid="li1" class="text-center tb-listBox text-black" componentname="li(html)" id="undefined_li1" style="padding-left:0px; padding-right:0px;overflow:visible;position:relative;display:block;"> 
                     <div xid="div6" style="overflow:hidden;">
                       <div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="overflow:hidden;"> 
                         <div class="x-col x-col-fixed x-col-center pull-left" xid="col2" id="imgcontainer" style="width:auto;"> 
@@ -65,7 +65,7 @@
                               </a> 
                             </div>  
                             <div class="x-col x-col-fixed x-col-center" xid="col7" style="width:auto;"> 
-                              <input component="$UI/system/components/justep/input/input" class="form-control" xid="goodsNbr" dataType="Integer" format="0,000" min="0" max="99" maxLength="2" placeHolder="0" style="text-align:center;width:50px;" bind-ref="ref(&quot;fNbr&quot;)" />
+                              <input component="$UI/system/components/justep/input/input" class="form-control" xid="goodsNbr" dataType="Integer" format="0,000" min="0" max="99" maxLength="2" placeHolder="0" style="text-align:center;width:50px;" bind-ref="ref(&quot;fNbr&quot;)" readonly="true"/>
                             </div>  
                             <div class="x-col x-col-fixed x-col-center" xid="col8" style="width:auto;"> 
                               <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-sm btn-only-icon" label="button" xid="plusBtn" icon="icon-android-add" onClick="plusBtnClick"> 
