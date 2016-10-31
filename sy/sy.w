@@ -52,8 +52,7 @@
                         active="0" slidable="true" wrap="true" swipe="true" xid="contentsImg"
                         routable="false"> 
                         <div class="x-contents-content" xid="content2"> 
-                          <img src="" alt="" xid="image13" bind-click="openPageClick"
-                            class="tb-img1" pagename="" style="width:100%;"/> 
+                          <img src="" alt="" xid="image13" class="tb-img1" pagename="" style="width:100%;"/> 
                         </div> 
                       </div> 
                     </div> 

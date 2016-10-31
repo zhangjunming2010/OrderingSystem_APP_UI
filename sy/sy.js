@@ -91,18 +91,6 @@ define(function(require) {
 		});
 	};
 
-	// 打开页面
-	Model.prototype.openPageClick = function(event) {
-		/*
-		 * 1、点击组件增加算定义属性：pagename 2、获取自定义属性，打开 对应页面
-		代码如下： */
-		var row = event.bindingContext.$object;
-		var pagename = row.val("pageName");
-		if (pagename)
-			justep.Shell.showPage(pagename,{menu_id:row.val("id")});
-		
-	};
-
 	// 进入详细页
 	Model.prototype.listClick = function(event) {
 		/*

@@ -179,5 +179,9 @@ define(function(require) {
 		$(".x-hint").find("button[class='close']").hide();
 	};
 
+	Model.prototype.commitBtnClick = function(event){
+		
+	};
+
 	return Model;
 });

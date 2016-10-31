@@ -28,7 +28,7 @@
           </a> 
         </div>  
         <div class="x-titlebar-title">已选菜品</div>  
-        <div class="x-titlebar-right reverse"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-icon-left pull-right center-block" label="提交菜单" xid="commitBtn" icon="icon-clipboard" style="color:#FFFFFF;background-color:ff3838;">
+        <div class="x-titlebar-right reverse"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-icon-left pull-right center-block" label="提交菜单" xid="commitBtn" icon="icon-clipboard" style="color:#FFFFFF;background-color:ff3838;" onClick="commitBtnClick">
    <i xid="i3" class="icon-clipboard"></i>
    <span xid="span5">提交菜单</span></a></div> 
       </div> 
